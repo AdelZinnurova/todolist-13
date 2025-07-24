@@ -1,5 +1,5 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit"
-import { createTodolistAC, deleteTodolistAC } from "./todolists-slice.ts"
+import { createTodolistAC, deleteTodolistTC } from "./todolists-slice.ts"
 
 const initialState: TasksState = {}
 
@@ -36,7 +36,7 @@ export const tasksSlice = createSlice({
       .addCase(createTodolistAC, (state, action) => {
         state[action.payload.id] = []
       })
-      .addCase(deleteTodolistAC, (state, action) => {
+      .addCase(deleteTodolistTC.fulfilled, (state, action) => {
         delete state[action.payload.id]
       })
   },
